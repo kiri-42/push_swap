@@ -7,29 +7,14 @@ static int	short_sort(int sort_size, t_stack *stack_a)
 	else if (sort_size == 2)
 	{
 		if (stack_a->num[stack_a->top] > stack_a->num[stack_a->top - 1])
-			swap(&stack_a->num[stack_a->top], &stack_a->num[stack_a->top - 1], "sa");
+			swap(&stack_a->num[stack_a->top], &stack_a->num[stack_a->top - 1], \
+			"sa");
 	}
 	else
 	{
 		three_sort(stack_a);
 	}
 	return (0);
-}
-
-static ssize_t	search_min(t_stack *stack)
-{
-	ssize_t	min;
-	ssize_t	i;
-
-	min = 0;
-	i = 1;
-	while (i <= stack->top)
-	{
-		if (stack->num[i] < stack->num[min])
-			min = i;
-		i++;
-	}
-	return (min);
 }
 
 static int	medium_sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
@@ -65,7 +50,7 @@ static int	long_sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
 	{
 		if (stack_a->num[stack_a->top] <= median)
 			push();
-		rotate()1;
+		rotate();
 		i++;
 	}
 
