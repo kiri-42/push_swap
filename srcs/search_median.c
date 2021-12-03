@@ -15,7 +15,9 @@ static void	quick_sort(int *stack_num, int left, int right)
 	int	i;
 	int	j;
 
-	pivot = stack_num[0];
+	if (left >= right)
+		return ;
+	pivot = stack_num[left];
 	i = 0;
 	j = right;
 	while (1)
@@ -28,7 +30,7 @@ static void	quick_sort(int *stack_num, int left, int right)
 			break ;
 		swap_p(&(stack_num[i]), &(stack_num[j]));
 		i++;
-		j++;
+		j--;
 	}
 	quick_sort(stack_num, left, i - 1);
 	quick_sort(stack_num, j + 1, right);
@@ -40,6 +42,8 @@ int	search_median(t_stack *stack)
 	int	median;
 
 	stack_copy = (int *)malloc(sizeof(int) * (stack->top + 1));
+	if (stack_copy == NULL)
+		return (1);
 	ft_memcpy(stack_copy, stack->num, sizeof(int) * (stack->top + 1));
 	quick_sort(stack_copy, 0, (int)stack->top);
 	median = stack_copy[(stack->top + 1) / 2];
@@ -47,17 +51,18 @@ int	search_median(t_stack *stack)
 	return (median);
 }
 
-int	main()
-{
-	t_stack	stack;
+// int	main()
+// {
+// 	t_stack	stack;
 
-	stack.num = (int *)malloc(sizeof(int) * 5);
-	stack.num[0] = 0;
-	stack.num[1] = 1;
-	stack.num[2] = 2;
-	stack.num[3] = 3;
-	stack.num[4] = 4;
-	stack.top = 4;
-	printf("median:%d\n", search_median(&stack));
-	free(stack.num);
-}
+// 	stack.num = (int *)malloc(sizeof(int) * 6);
+// 	stack.num[0] = 3;
+// 	stack.num[1] = 6;
+// 	stack.num[2] = 4;
+// 	stack.num[3] = 1;
+// 	stack.num[4] = 2;
+// 	stack.num[5] = 5;
+// 	stack.top = 5;
+// 	printf("median:%d\n", search_median(&stack));
+// 	free(stack.num);
+// }
