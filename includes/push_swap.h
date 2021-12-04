@@ -40,6 +40,8 @@ void	push(t_stack *push_stack, t_stack *pop_stack, char *message);
 /* rotate_operation */
 void	rotate(t_stack *stack, char *message);
 void	rrotate(t_stack *stack, char *message);
+void	rotate_ab(t_stack *stack_a, t_stack *stack_b, char *message);
+void	rrotate_ab(t_stack *stack_a, t_stack *stack_b, char *message);
 
 /* search_median */
 int		search_median(t_stack *stack);
