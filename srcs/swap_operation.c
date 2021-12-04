@@ -12,8 +12,3 @@ void	swap(int *n1, int *n2, char *message)
 	*n2 = tmp;
 	print_stdout(message);
 }
-
-// void	swap_ab()
-// {
-
-// }
