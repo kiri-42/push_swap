@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-void	rotate(t_stack *stack)
+void	rotate(t_stack *stack, char *message)
 {
 	int		tmp;
 	size_t	i;
@@ -13,10 +13,10 @@ void	rotate(t_stack *stack)
 		i++;
 	}
 	stack->num[0] = tmp;
-	print_stdout("ra");
+	print_stdout(message);
 }
 
-void	rrotate(t_stack *stack)
+void	rrotate(t_stack *stack, char *message)
 {
 	int		tmp;
 	size_t	i;
@@ -29,5 +29,5 @@ void	rrotate(t_stack *stack)
 		i++;
 	}
 	stack->num[stack->top] = tmp;
-	print_stdout("rra");
+	print_stdout(message);
 }

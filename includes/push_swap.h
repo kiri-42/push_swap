@@ -38,8 +38,8 @@ void	swap(int *n1, int *n2, char *message);
 void	push(t_stack *push_stack, t_stack *pop_stack, char *message);
 
 /* rotate_operation */
-void	rotate(t_stack *stack);
-void	rrotate(t_stack *stack);
+void	rotate(t_stack *stack, char *message);
+void	rrotate(t_stack *stack, char *message);
 
 /* search_median */
 int		search_median(t_stack *stack);
