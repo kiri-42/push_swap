@@ -32,13 +32,13 @@ void	rrotate(t_stack *stack, char *message)
 	print_stdout(message);
 }
 
-void	rotate_ab(t_stack *stack_a, t_stack *stack_b, char *message)
+void	rotate_ab(t_stack *stack_a, t_stack *stack_b)
 {
 	rotate(stack_a, "ra");
 	rotate(stack_b, "rb");
 }
 
-void	rrotate_ab(t_stack *stack_a, t_stack *stack_b, char *message)
+void	rrotate_ab(t_stack *stack_a, t_stack *stack_b)
 {
 	rotate(stack_a, "rra");
 	rotate(stack_b, "rrb");
