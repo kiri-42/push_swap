@@ -17,7 +17,7 @@ static int	short_sort(int sort_size, t_stack *stack_a)
 	return (0);
 }
 
-static int	medium_sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
+static int	medium_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	ssize_t	min;
 
@@ -39,42 +39,7 @@ static int	medium_sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
 	return (0);
 }
 
-static void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
-{
-	int		pivot;
-	size_t	count_ra;
-	size_t	count_pb;
-	size_t	i;
-
-	if (sort_size == 1)
-		return ;
-	pivot = search_median(stack_a);
-	count_ra = 0;
-	count_pb = 0;
-	while (1)
-	{
-		if (stack_a->num[stack_a->top] > pivot)
-		{
-			rotate(stack_a, "ra");
-			count_ra++;
-		}
-		else
-		{
-			push(stack_b, stack_a, "pb");
-			count_pb++;
-		}
-	}
-	i = 1;
-	while (i <= count_ra)
-	{
-		rrotate(stack_a, "rra");
-		i++;
-	}
-	A_to_B(count_ra, stack_a, stack_b);
-	B_to_A(count_pb, stack_b, stack_a);
-}
-
-static void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
+void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 {
 	int		pivot;
 	size_t	count_rb;
@@ -89,7 +54,7 @@ static void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 	pivot = search_median(stack_b);
 	count_rb = 0;
 	count_pa = 0;
-	while (1)
+	while (sort_size--)
 	{
 		if (stack_b->num[stack_b->top] > pivot)
 		{
@@ -112,23 +77,44 @@ static void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 	B_to_A(count_rb, stack_b, stack_a);
 }
 
-static int	long_sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
+void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
+{
+	int		pivot;
+	size_t	count_ra;
+	size_t	count_pb;
+	size_t	i;
+
+	if (sort_size == 1)
+		return ;
+	pivot = search_median(stack_a);
+	count_ra = 0;
+	count_pb = 0;
+	while (sort_size--)
+	{
+		if (stack_a->num[stack_a->top] > pivot)
+		{
+			rotate(stack_a, "ra");
+			count_ra++;
+		}
+		else
+		{
+			push(stack_b, stack_a, "pb");
+			count_pb++;
+		}
+	}
+	i = 1;
+	while (i <= count_ra)
+	{
+		rrotate(stack_a, "rra");
+		i++;
+	}
+	A_to_B(count_ra, stack_a, stack_b);
+	B_to_A(count_pb, stack_b, stack_a);
+}
+
+static void	long_sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
 {
 	A_to_B((size_t)sort_size, stack_a, stack_b);
-	// int	median;
-	// int	i;
-
-	// median = search_median(stack_a);
-
-	// i = 0;
-	// while (i <= stack_a->top)
-	// {
-	// 	if (stack_a->num[stack_a->top] <= median)
-	// 		push();
-	// 	rotate();
-	// 	i++;
-	// }
-
 }
 
 int	sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
@@ -136,7 +122,7 @@ int	sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
 	if (sort_size <= 3)
 		short_sort(sort_size, stack_a);
 	else if (sort_size <= 6)
-		medium_sort(sort_size, stack_a, stack_b);
+		medium_sort(stack_a, stack_b);
 	else
 		long_sort(sort_size, stack_a, stack_b);
 	return (0);

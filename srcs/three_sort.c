@@ -15,20 +15,20 @@ int	three_sort(t_stack *stack)
 	n2 = stack->top - 1;
 	n3 = stack->top - 2;
 	if (check_sort(stack->num[n3], stack->num[n1], stack->num[n2]))
-		rrotate(stack);
+		rrotate(stack, "rra");
 	else if (check_sort(stack->num[n2], stack->num[n1], stack->num[n3]))
 		swap(&stack->num[n1], &stack->num[n2], "sa");
 	else if (check_sort(stack->num[n2], stack->num[n3], stack->num[n1]))
-		rotate(stack);
+		rotate(stack, "ra");
 	else if (check_sort(stack->num[n3], stack->num[n2], stack->num[n1]))
 	{
 		swap(&stack->num[n1], &stack->num[n2], "sa");
-		rrotate(stack);
+		rrotate(stack, "rra");
 	}
 	else if (check_sort(stack->num[n1], stack->num[n3], stack->num[n2]))
 	{
 		swap(&stack->num[n1], &stack->num[n2], "sa");
-		rotate(stack);
+		rotate(stack, "ra");
 	}
 	return (0);
 }

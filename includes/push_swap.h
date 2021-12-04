@@ -27,6 +27,8 @@ int		check_arg(int ac, char **av);
 
 /* sort */
 int		sort(int sort_size, t_stack *stack_a, t_stack *stack_b);
+void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b);
+void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a);
 
 /* three_sort */
 int		three_sort(t_stack *stack);

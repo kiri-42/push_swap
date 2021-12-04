@@ -13,10 +13,12 @@ int	main(int ac, char **av)
 	i = 0;
 	if (sort(ac - 1, &stack_a, &stack_b))
 		return (0);
-	while (i < ac - 1)
+	while (i < (size_t)ac - 1)
 	{
 		printf("%d|", stack_a.num[i]);
 		i++;
 	}
+	free(stack_a.num);
+	free(stack_b.num);
 	return (0);
 }

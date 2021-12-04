@@ -23,7 +23,7 @@ void	rrotate(t_stack *stack, char *message)
 
 	tmp = stack->num[0];
 	i = 0;
-	while (i != stack->top)
+	while (i != (size_t)stack->top)
 	{
 		stack->num[i] = stack->num[i + 1];
 		i++;
