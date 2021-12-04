@@ -33,6 +33,7 @@ int		three_sort(t_stack *stack);
 
 /* swap_operation */
 void	swap(int *n1, int *n2, char *message);
+void	swap_ab(t_stack *stack_a, t_stack *stack_b);
 
 /* push_operation */
 void	push(t_stack *push_stack, t_stack *pop_stack, char *message);
