@@ -47,7 +47,7 @@ void	rotate_ab(t_stack *stack_a, t_stack *stack_b);
 void	rrotate_ab(t_stack *stack_a, t_stack *stack_b);
 
 /* search_median */
-int		search_median(t_stack *stack);
+int		search_median(t_stack *stack, size_t sort_size);
 // void	quick_sort(int *stack, int left, int right);
 
 /* search_min */

@@ -9,11 +9,12 @@ static void	swap_p(int *left, int *right)
 	*right = tmp;
 }
 
-static void	quick_sort(int *stack_num, int left, int right)
+//マイナスになるケースがあるため添字変数にssize_tを使う
+static void	quick_sort(int *stack_num, ssize_t left, ssize_t right)
 {
-	int	pivot;
-	int	i;
-	int	j;
+	int		pivot;
+	ssize_t	i;
+	ssize_t	j;
 
 	if (left >= right)
 		return ;
@@ -36,17 +37,18 @@ static void	quick_sort(int *stack_num, int left, int right)
 	quick_sort(stack_num, j + 1, right);
 }
 
-int	search_median(t_stack *stack)
+int	search_median(t_stack *stack, size_t sort_size)
 {
 	int	*stack_copy;
 	int	median;
 
-	stack_copy = (int *)malloc(sizeof(int) * (stack->top + 1));
+	stack_copy = (int *)malloc(sizeof(int) * sort_size);
 	if (stack_copy == NULL)
 		return (1);
-	ft_memcpy(stack_copy, stack->num, sizeof(int) * (stack->top + 1));
-	quick_sort(stack_copy, 0, (int)stack->top);
-	median = stack_copy[(stack->top + 1) / 2];
+	ft_memcpy(stack_copy, &stack->num[stack->top - (sort_size - 1)],
+		sizeof(int) * sort_size);
+	quick_sort(stack_copy, 0, sort_size - 1);
+	median = stack_copy[sort_size / 2];
 	free(stack_copy);
 	return (median);
 }
@@ -55,14 +57,15 @@ int	search_median(t_stack *stack)
 // {
 // 	t_stack	stack;
 
-// 	stack.num = (int *)malloc(sizeof(int) * 6);
-// 	stack.num[0] = 3;
-// 	stack.num[1] = 6;
-// 	stack.num[2] = 4;
-// 	stack.num[3] = 1;
-// 	stack.num[4] = 2;
-// 	stack.num[5] = 5;
-// 	stack.top = 5;
-// 	printf("median:%d\n", search_median(&stack));
+// 	stack.num = (int *)malloc(sizeof(int) * 7);
+// 	stack.num[0] = 4;
+// 	stack.num[1] = 9;
+// 	stack.num[2] = 5;
+// 	stack.num[3] = 2;
+// 	stack.num[4] = 8;
+// 	stack.num[5] = 3;
+// 	stack.num[6] = 1;
+// 	stack.top = 6;
+// 	printf("median:%d\n", search_median(&stack, 7));
 // 	free(stack.num);
 // }

@@ -46,17 +46,26 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 	size_t	count_pa;
 	size_t	i;
 
-	if (sort_size == 1)
+	if (sort_size <= 1)
 	{
 		push(stack_a, stack_b, "pa");
 		return ;
 	}
-	pivot = search_median(stack_b);
+	if (sort_size == 2)
+	{
+		if (stack_b->num[stack_b->top] < stack_b->num[stack_b->top - 1])
+			swap(&stack_b->num[stack_b->top], &stack_b->num[stack_b->top - 1],
+				"sa");
+		push(stack_a, stack_b, "pa");
+		push(stack_a, stack_b, "pa");
+		return ;
+	}
+	pivot = search_median(stack_b, sort_size);
 	count_rb = 0;
 	count_pa = 0;
 	while (sort_size--)
 	{
-		if (stack_b->num[stack_b->top] > pivot)
+		if (stack_b->num[stack_b->top] < pivot)
 		{
 			rotate(stack_b, "rb");
 			count_rb++;
@@ -84,9 +93,9 @@ void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 	size_t	count_pb;
 	size_t	i;
 
-	if (sort_size == 1)
+	if (sort_size <= 1)
 		return ;
-	pivot = search_median(stack_a);
+	pivot = search_median(stack_a, sort_size);
 	count_ra = 0;
 	count_pb = 0;
 	while (sort_size--)
