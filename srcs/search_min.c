@@ -1,12 +1,12 @@
 #include "../includes/push_swap.h"
 
-ssize_t	search_min(t_stack *stack)
+size_t	search_min(t_stack *stack)
 {
-	ssize_t	min;
-	ssize_t	i;
+	size_t	min;
+	size_t	i;
 
-	min = 0;
-	i = 1;
+	min = 1;
+	i = 2;
 	while (i <= stack->top)
 	{
 		if (stack->num[i] < stack->num[min])

@@ -10,10 +10,10 @@ int	main(int ac, char **av)
 		return (1);
 	if (init_stack(&stack_a, &stack_b, ac, av))
 		return (1);
-	i = 0;
 	if (sort(ac - 1, &stack_a, &stack_b))
 		return (0);
-	while (i < (size_t)ac - 1)
+	i = 1;
+	while (i <= (size_t)ac - 1)
 	{
 		printf("%d|", stack_a.num[i]);
 		i++;

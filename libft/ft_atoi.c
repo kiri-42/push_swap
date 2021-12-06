@@ -1,40 +1,47 @@
 #include "libft.h"
 
-static int	ft_isspace(char c)
+static int	ft_isspace(char a)
 {
-	return (c == ' ' || c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == '\r');
+	if (a == '\t' || a == '\n' || a == '\v'
+		|| a == ' ' || a == '\r' || a == '\f' )
+		return (1);
+	return (0);
 }
 
-static int	check_min(const char *nptr)
+static long	process_flow(int sign)
 {
-	if (!(ft_strncmp(nptr, "-2147483648", 11)))
-		return (-1);
-	return (1);
+	if (sign == -1)
+	{
+		return (LONG_MIN);
+	}
+	return (LONG_MAX);
 }
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
-	int		num;
-	int		sign;
+	size_t		i;
+	long		num;
+	int			sign;
 
-	i = 0;
 	num = 0;
+	i = 0;
 	sign = 1;
-	while (ft_isspace(nptr[i]))
+	if (!str)
+		return (0);
+	while (ft_isspace(str[i]))
 		i++;
-	sign = check_min(&nptr[i]);
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (str[i] == '+' || str[i] == '-')
 	{
-		if (nptr[i] == '-' && sign == 1)
-			sign *= -1;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	while (ft_isdigit(nptr[i]))
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		num = 10 * num + (nptr[i] - '0');
+		if ((num * 10 + (str[i] - '0')) / 10 != num)
+			return ((int)process_flow(sign));
+		num = (num * 10) + (str[i] - '0');
 		i++;
 	}
-	return (num * sign);
+	return ((int)(num * sign));
 }
