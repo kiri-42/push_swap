@@ -37,20 +37,19 @@ static void	quick_sort(int *stack_num, ssize_t left, ssize_t right)
 	quick_sort(stack_num, j + 1, right);
 }
 
-int	search_median(t_stack *stack, size_t sort_size)
+int	search_median(t_stack *stack, size_t sort_size, int *median)
 {
 	int	*stack_copy;
-	int	median;
 
 	stack_copy = (int *)malloc(sizeof(int) * sort_size);
 	if (stack_copy == NULL)
 		return (1);
 	ft_memcpy(stack_copy, &stack->num[stack->top - (sort_size - 1)],
 		sizeof(int) * sort_size);
-	quick_sort(stack_copy, 0, sort_size - 1);
-	median = stack_copy[sort_size / 2];
+	quick_sort(stack_copy, 0, (ssize_t)sort_size - 1);
+	*median = stack_copy[sort_size / 2];
 	free(stack_copy);
-	return (median);
+	return (0);
 }
 
 // int	main()

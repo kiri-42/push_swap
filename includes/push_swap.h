@@ -20,7 +20,7 @@ int		init_stack(t_stack *stack_a, t_stack *stack_b, int ac, char **av);
 
 /* print_message */
 void	print_stdout(char *message);
-void	print_stderr(char *message);
+void	print_stderr(void);
 
 /* check_arg */
 int		check_arg(int ac, char **av);
@@ -47,7 +47,7 @@ void	rotate_ab(t_stack *stack_a, t_stack *stack_b);
 void	rrotate_ab(t_stack *stack_a, t_stack *stack_b);
 
 /* search_median */
-int		search_median(t_stack *stack, size_t sort_size);
+int		search_median(t_stack *stack, size_t sort_size, int *median);
 // void	quick_sort(int *stack, int left, int right);
 
 /* search_min */

@@ -10,7 +10,7 @@ static int	check_digit(int ac, char **av)
 	{
 		if (av[i][0] != '-' && !(ft_isdigit(av[i][0])))
 		{
-			print_stderr("error1");
+			print_stderr();
 			return (1);
 		}
 		j = 1;
@@ -18,7 +18,7 @@ static int	check_digit(int ac, char **av)
 		{
 			if (!(ft_isdigit(av[i][j++])))
 			{
-				print_stderr("error2");
+				print_stderr();
 				return (1);
 			}
 		}

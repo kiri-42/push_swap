@@ -1,3 +1,4 @@
 .vscode/
 *.dSYM/
 a.out
+.DS_Store
