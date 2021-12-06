@@ -60,8 +60,9 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 		push(stack_a, stack_b, "pa");
 		return ;
 	}
-	if (search_median(stack_a, sort_size, &pivot))
+	if (search_median(stack_b, sort_size, &pivot))
 	{
+		print_stderr();
 		free(stack_a->num);
 		free(stack_b->num);
 		exit(1);
@@ -102,6 +103,7 @@ void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 		return ;
 	if (search_median(stack_a, sort_size, &pivot))
 	{
+		print_stderr();
 		free(stack_a->num);
 		free(stack_b->num);
 		exit(1);
