@@ -19,6 +19,23 @@ typedef struct s_stack
 #  define BUFFER_SIZE 1
 # endif
 
-#endif
+/* check_arg */
+int		check_arg(int ac, char **av);
 
-/*  */
+/* init_stack */
+int		init_stack(t_stack *stack_a, t_stack *stack_b, int ac, char **av);
+
+/* sort */
+int		sort(char **command_list);
+
+/* get_next_line */
+char	*get_next_line(int fd);
+
+/* get_next_line_utils */
+char	*free_and_return(char *free_variable);
+
+/* print_message */
+void	print_stderr(void);
+void	print_stdout(char *message);
+
+#endif
