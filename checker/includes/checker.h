@@ -7,6 +7,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <stdio.h>
+# include <stdbool.h>
 # include "../libft/libft.h"
 
 typedef struct s_stack
@@ -26,7 +27,7 @@ int		check_arg(int ac, char **av);
 int		init_stack(t_stack *stack_a, t_stack *stack_b, int ac, char **av);
 
 /* sort */
-int		sort(char **command_list);
+int		sort(t_stack *stack_a, t_stack *stack_b);
 
 /* get_next_line */
 char	*get_next_line(int fd);
@@ -37,5 +38,18 @@ char	*free_and_return(char *free_variable);
 /* print_message */
 void	print_stderr(void);
 void	print_stdout(char *message);
+
+/* command_swap */
+void	swap(int *n1, int *n2, char *message);
+void	swap_ab(t_stack *stack_a, t_stack *stack_b);
+
+/* command_push */
+void	push(t_stack *push_stack, t_stack *pop_stack, char *message);
+
+/* command_rotate */
+void	rotate(t_stack *stack, char *message);
+void	rrotate(t_stack *stack, char *message);
+void	rotate_ab(t_stack *stack_a, t_stack *stack_b);
+void	rrotate_ab(t_stack *stack_a, t_stack *stack_b);
 
 #endif
