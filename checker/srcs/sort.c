@@ -16,10 +16,10 @@
 // 	command_list[11] = NULL;
 // }
 
-static int	read_command(char *command)
+static int	read_command(char **command)
 {
-	command = get_next_line(STDIN_FILENO);
-	if (command == NULL)
+	*command = get_next_line(STDIN_FILENO);
+	if (*command == NULL)
 		return (1);
 	return (0);
 }
@@ -58,10 +58,8 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	char	*command;
 
 	command = NULL;
-	while (1)
+	while (!read_command(&command))
 	{
-		if (read_command(command))
-			break ;
 		run_command(command, stack_a, stack_b);
 		free(command);
 	}
