@@ -118,19 +118,19 @@ char	*get_next_line(int fd)
 	return (read_file(fd, line, &save));
 }
 
-int main(void)
-{
-	int fd;
-	char *line;
+// int main(void)
+// {
+// 	int fd;
+// 	char *line;
 
-	fd = open("test.txt", O_RDONLY);
-	do
-	{
-		line = get_next_line(fd);
-		printf("%s", line);
-		free(line);
-	} while (line == NULL);
-	close(fd);
-	return (0);
+// 	fd = open("test.txt", O_RDONLY);
+// 	do
+// 	{
+// 		line = get_next_line(fd);
+// 		printf("%s", line);
+// 		free(line);
+// 	} while (line == NULL);
+// 	close(fd);
+// 	return (0);
 
-}
+// }
