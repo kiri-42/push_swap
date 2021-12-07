@@ -9,18 +9,12 @@ static int	check_digit(int ac, char **av)
 	while (i < (size_t)ac)
 	{
 		if (av[i][0] != '-' && !(ft_isdigit(av[i][0])))
-		{
-			print_stderr();
 			return (1);
-		}
 		j = 1;
 		while (av[i][j] != '\0')
 		{
 			if (!(ft_isdigit(av[i][j++])))
-			{
-				print_stderr();
 				return (1);
-			}
 		}
 		i++;
 	}

@@ -24,11 +24,11 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	i = 1;
-	// while (i <= (size_t)ac - 1)
-	// {
-	// 	printf("%d|", stack_a.num[i]);
-	// 	i++;
-	// }
+	while (i <= (size_t)ac - 1)
+	{
+		printf("%d|", stack_a.num[i]);
+		i++;
+	}
 	free(stack_a.num);
 	free(stack_b.num);
 	return (0);
