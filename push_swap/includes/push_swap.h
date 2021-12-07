@@ -6,9 +6,6 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 
-# define STACK_A 0
-# define STACK_B 1
-
 typedef struct s_stack
 {
 	int		*num;
