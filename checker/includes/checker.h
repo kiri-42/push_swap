@@ -40,15 +40,15 @@ void	print_stderr(void);
 void	print_stdout(char *message);
 
 /* command_swap */
-void	swap(int *n1, int *n2, char *message);
+void	swap(int *n1, int *n2);
 void	swap_ab(t_stack *stack_a, t_stack *stack_b);
 
 /* command_push */
-void	push(t_stack *push_stack, t_stack *pop_stack, char *message);
+void	push(t_stack *push_stack, t_stack *pop_stack);
 
 /* command_rotate */
-void	rotate(t_stack *stack, char *message);
-void	rrotate(t_stack *stack, char *message);
+void	rotate(t_stack *stack);
+void	rrotate(t_stack *stack);
 void	rotate_ab(t_stack *stack_a, t_stack *stack_b);
 void	rrotate_ab(t_stack *stack_a, t_stack *stack_b);
 

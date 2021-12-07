@@ -1,6 +1,6 @@
 #include "../includes/checker.h"
 
-void	rotate(t_stack *stack, char *message)
+void	rotate(t_stack *stack)
 {
 	int		tmp;
 	size_t	i;
@@ -13,11 +13,9 @@ void	rotate(t_stack *stack, char *message)
 		i++;
 	}
 	stack->num[1] = tmp;
-	if (ft_strncmp(message, "rr", 2))
-	print_stdout(message);
 }
 
-void	rrotate(t_stack *stack, char *message)
+void	rrotate(t_stack *stack)
 {
 	int		tmp;
 	size_t	i;
@@ -30,20 +28,16 @@ void	rrotate(t_stack *stack, char *message)
 		i++;
 	}
 	stack->num[stack->top] = tmp;
-	if (ft_strncmp(message, "rrr", 3))
-	print_stdout(message);
 }
 
 void	rotate_ab(t_stack *stack_a, t_stack *stack_b)
 {
-	rotate(stack_a, "rr");
-	rotate(stack_b, "rr");
-	print_stdout("rr");
+	rotate(stack_a);
+	rotate(stack_b);
 }
 
 void	rrotate_ab(t_stack *stack_a, t_stack *stack_b)
 {
-	rotate(stack_a, "rrr");
-	rotate(stack_b, "rrr");
-	print_stdout("rrr");
+	rotate(stack_a);
+	rotate(stack_b);
 }
