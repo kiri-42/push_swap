@@ -1,21 +1,5 @@
 #include "../includes/checker.h"
 
-// static void	set_command_list(char **command_list)
-// {
-// 	command_list[0] = "sa\n";
-// 	command_list[1] = "sb\n";
-// 	command_list[2] = "ss\n";
-// 	command_list[3] = "pa\n";
-// 	command_list[4] = "pb\n";
-// 	command_list[5] = "ra\n";
-// 	command_list[6] = "rb\n";
-// 	command_list[7] = "rr\n";
-// 	command_list[8] = "rra\n";
-// 	command_list[9] = "rrb\n";
-// 	command_list[10] = "rrr\n";
-// 	command_list[11] = NULL;
-// }
-
 static int	read_command(char **command)
 {
 	*command = get_next_line(STDIN_FILENO);
