@@ -55,7 +55,7 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 	{
 		if (stack_b->num[stack_b->top] < stack_b->num[stack_b->top - 1])
 			swap(&stack_b->num[stack_b->top], &stack_b->num[stack_b->top - 1],
-				"sa");
+				"sb");
 		push(stack_a, stack_b, "pa");
 		push(stack_a, stack_b, "pa");
 		return ;
