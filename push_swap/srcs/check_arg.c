@@ -6,13 +6,13 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:02 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 15:58:03 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/08 18:20:36 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	check_digit(int ac, char **av)
+static bool	check_digit(int ac, char **av)
 {
 	size_t	i;
 	size_t	j;
@@ -21,23 +21,23 @@ static int	check_digit(int ac, char **av)
 	while (i < (size_t)ac)
 	{
 		if (av[i][0] != '-' && !(ft_isdigit(av[i][0])))
-			return (1);
+			return (false);
 		j = 1;
 		while (av[i][j] != '\0')
 		{
 			if (!(ft_isdigit(av[i][j++])))
-				return (1);
+				return (false);
 		}
 		i++;
 	}
-	return (0);
+	return (true);
 }
 
-int	check_arg(int ac, char **av)
+bool	check_arg(int ac, char **av)
 {
 	if (ac <= 1)
-		return (1);
-	if (check_digit(ac, av))
-		return (1);
-	return (0);
+		return (false);
+	if (!check_digit(ac, av))
+		return (false);
+	return (true);
 }
