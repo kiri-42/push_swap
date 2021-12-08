@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 22:18:46 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/08 22:57:29 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a);
 
 /* three_sort */
 void	three_sort(t_stack *stack);
+
+/* check_three_sort */
+bool	check_three_sort(int small, int medium, int large);
 
 /* search_min */
 size_t	search_min(t_stack *stack);
