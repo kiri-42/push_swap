@@ -6,13 +6,13 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:21 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 17:24:19 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/08 18:08:07 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	short_sort(int sort_size, t_stack *stack_a)
+static void	short_sort(int sort_size, t_stack *stack_a)
 {
 	if (sort_size == 1)
 		;
@@ -26,10 +26,9 @@ static int	short_sort(int sort_size, t_stack *stack_a)
 	{
 		three_sort(stack_a);
 	}
-	return (0);
 }
 
-static int	medium_sort(t_stack *stack_a, t_stack *stack_b)
+static void	medium_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	size_t	min;
 
@@ -48,7 +47,6 @@ static int	medium_sort(t_stack *stack_a, t_stack *stack_b)
 	{
 		push(stack_a, stack_b, "pa");
 	}
-	return (0);
 }
 
 static void	long_sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
