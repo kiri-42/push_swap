@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:57:23 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 15:57:24 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/08 18:34:28 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 	t_stack	stack_b;
 	size_t	i;
 
-	if (check_arg(ac, av))
+	if (!check_arg(ac, av))
 	{
 		print_stderr();
 		return (1);
