@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:02 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 18:20:36 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/08 18:48:13 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ static bool	check_digit(int ac, char **av)
 
 bool	check_arg(int ac, char **av)
 {
-	if (ac <= 1)
+	if (ac <= 0)
 		return (false);
+	if (ac == 1)
+		exit(0);
 	if (!check_digit(ac, av))
 		return (false);
 	return (true);
