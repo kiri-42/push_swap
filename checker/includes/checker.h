@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:01:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 16:01:39 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:02:06 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_stack
 # endif
 
 /* check_arg */
-int		check_arg(int ac, char **av);
+bool	check_arg(int ac, char **av);
 
 /* init_stack */
 int		init_stack(t_stack *stack_a, t_stack *stack_b, int ac, char **av);
