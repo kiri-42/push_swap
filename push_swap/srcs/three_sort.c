@@ -6,13 +6,13 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:23 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 15:58:24 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/08 18:11:54 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	check_sort(int small, int medium, int large)
+static bool	check_sort(int small, int medium, int large)
 {
 	return (small < medium && medium < large);
 }
