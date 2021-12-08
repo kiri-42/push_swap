@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/08 16:07:01 by tkirihar          #+#    #+#             */
+/*   Updated: 2021/12/08 16:07:02 by tkirihar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdio.h>
 
@@ -8,7 +20,7 @@ static size_t	get_head_trimlen(char const *s1, char const *set)
 
 	i = 0;
 	while (s1[i] != '\0')
-	{	
+	{
 		j = 0;
 		while (s1[i] != set[j] && set[j] != '\0')
 			j++;
@@ -27,7 +39,7 @@ static size_t	get_end_trimlen(char const *s1, char const *set, size_t len)
 
 	i = len - 1;
 	while (s1[i] != '\0')
-	{	
+	{
 		j = 0;
 		while (s1[i] != set[j] && set[j] != '\0')
 			j++;
