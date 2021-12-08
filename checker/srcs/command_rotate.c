@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:01:51 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 16:01:52 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:07:15 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	rotate(t_stack *stack)
 
 	tmp = stack->num[stack->top];
 	i = 0;
-	while (stack->top - i != 0)
+	while (stack->top - i > 0)
 	{
 		stack->num[stack->top - i] = stack->num[stack->top - i - 1];
 		i++;
@@ -34,7 +34,7 @@ void	rrotate(t_stack *stack)
 
 	tmp = stack->num[1];
 	i = 1;
-	while (i < (size_t)stack->top)
+	while (i < stack->top)
 	{
 		stack->num[i] = stack->num[i + 1];
 		i++;
