@@ -1,5 +1,7 @@
-.vscode/
-*.dSYM/
+*
+!*.*
+!*/
 a.out
 .DS_Store
-.txt
+.vscode/
+*.dSYM/
