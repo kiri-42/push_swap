@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 22:57:29 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 20:47:50 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ bool	check_arg(int ac, char **av);
 int		init_stack(t_stack *stack_a, t_stack *stack_b, int ac, char **av);
 
 /* sort */
-int		sort(int sort_size, t_stack *stack_a, t_stack *stack_b);
-void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b);
-void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a);
+void	sort(int sort_size, t_stack *stack_a, t_stack *stack_b);
 
 /* three_sort */
 void	three_sort(t_stack *stack);

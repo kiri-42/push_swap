@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:21 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 18:55:51 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 20:46:53 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	long_sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
 	A_to_B((size_t)sort_size, stack_a, stack_b);
 }
 
-int	sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
+void	sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
 {
 	if (sort_size <= 3)
 		short_sort(sort_size, stack_a);
@@ -62,5 +62,4 @@ int	sort(int sort_size, t_stack *stack_a, t_stack *stack_b)
 		medium_sort(stack_a, stack_b);
 	else
 		long_sort(sort_size, stack_a, stack_b);
-	return (0);
 }
