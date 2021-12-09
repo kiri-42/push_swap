@@ -6,19 +6,71 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:18:03 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 17:20:43 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:24:58 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
+void	three_sort3(t_stack *stack_b, t_stack *stack_a)
 {
-	int		pivot;
-	size_t	count_rb;
-	size_t	count_pa;
-	size_t	i;
+	size_t	n1;
+	size_t	n2;
+	size_t	n3;
 
+	n1 = stack_b->top;
+	n2 = stack_b->top - 1;
+	n3 = stack_b->top - 2;
+	if (check_three_sort(stack_b->num[n3], stack_b->num[n1], stack_b->num[n2]))
+	{
+		swap(&stack_b->num[n1], &stack_b->num[n2], "sb");
+		push(stack_a, stack_b, "pa");
+		push(stack_a, stack_b, "pa");
+		push(stack_a, stack_b, "pa");
+	}
+	else if (check_three_sort(stack_b->num[n2], stack_b->num[n1], stack_b->num[n3]))
+	{
+		rotate(stack_b, "rb");
+		swap(&stack_b->num[n1], &stack_b->num[n2], "sb");
+		push(stack_a, stack_b, "pa");
+		rrotate(stack_b, "rrb");
+		push(stack_a, stack_b, "pa");
+		push(stack_a, stack_b, "pa");
+	}
+	else if (check_three_sort(stack_b->num[n2], stack_b->num[n3], stack_b->num[n1]))
+	{
+		push(stack_a, stack_b, "pa");
+		swap(&stack_b->num[n1], &stack_b->num[n2], "sb");
+		push(stack_a, stack_b, "pa");
+		push(stack_a, stack_b, "pa");
+	}
+	else if (check_three_sort(stack_b->num[n1], stack_b->num[n2], stack_b->num[n3]))
+	{
+		rotate(stack_b, "rb");
+		swap(&stack_b->num[n1], &stack_b->num[n2], "sb");
+		push(stack_a, stack_b, "pa");
+		push(stack_a, stack_b, "pa");
+		rrotate(stack_b, "rrb");
+		push(stack_a, stack_b, "pa");
+	}
+	else if (check_three_sort(stack_b->num[n1], stack_b->num[n3], stack_b->num[n2]))
+	{
+		rotate(stack_b, "rb");
+		push(stack_a, stack_b, "pa");
+		push(stack_a, stack_b, "pa");
+		rrotate(stack_b, "rrb");
+		push(stack_a, stack_b, "pa");
+	}
+	else if (check_three_sort(stack_b->num[n3], stack_b->num[n2], stack_b->num[n1]))
+	{
+		push(stack_a, stack_b, "pa");
+		push(stack_a, stack_b, "pa");
+		push(stack_a, stack_b, "pa");
+	}
+}
+
+void	short_sort3(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
+{
 	if (sort_size <= 1)
 	{
 		push(stack_a, stack_b, "pa");
@@ -31,6 +83,24 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 				"sb");
 		push(stack_a, stack_b, "pa");
 		push(stack_a, stack_b, "pa");
+		return ;
+	}
+	if (sort_size == 3)
+	{
+		three_sort3(stack_b, stack_a);
+	}
+}
+
+void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
+{
+	int		pivot;
+	size_t	count_rb;
+	size_t	count_pa;
+	size_t	i;
+
+	if (sort_size <= 3)
+	{
+		short_sort3(sort_size, stack_b, stack_a);
 		return ;
 	}
 	if (search_median(stack_b, sort_size, &pivot))

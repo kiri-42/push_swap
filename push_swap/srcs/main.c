@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:57:23 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 18:34:28 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 02:59:39 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	i = 1;
-	// while (i <= (size_t)ac - 1)
-	// {
-	// 	printf("%d|", stack_a.num[i]);
-	// 	i++;
-	// }
+	while (i <= (size_t)ac - 1)
+	{
+		printf("%d|", stack_a.num[i]);
+		i++;
+	}
 	free(stack_a.num);
 	free(stack_b.num);
 	return (0);

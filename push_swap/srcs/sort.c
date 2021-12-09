@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:21 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 22:53:00 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:24:16 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	medium_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	size_t	min;
 
-	while (stack_a->top != 3)
+	while (stack_a->top > 3)
 	{
 		min = search_min(stack_a);
 		while (min != stack_a->top)
@@ -43,7 +43,7 @@ static void	medium_sort(t_stack *stack_a, t_stack *stack_b)
 		push(stack_b, stack_a, "pb");
 	}
 	three_sort(stack_a);
-	while (stack_b->top != 0)
+	while (stack_b->top > 0)
 	{
 		push(stack_a, stack_b, "pa");
 	}
