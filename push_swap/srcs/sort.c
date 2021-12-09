@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:21 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 20:46:53 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 21:00:23 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ static void	short_sort(int sort_size, t_stack *stack_a)
 			"sa");
 	}
 	else
-	{
 		three_sort(stack_a);
-	}
 }
 
 static void	medium_sort(t_stack *stack_a, t_stack *stack_b)
@@ -44,9 +42,7 @@ static void	medium_sort(t_stack *stack_a, t_stack *stack_b)
 	}
 	three_sort(stack_a);
 	while (stack_b->top > 0)
-	{
 		push(stack_a, stack_b, "pa");
-	}
 }
 
 static void	long_sort(int sort_size, t_stack *stack_a, t_stack *stack_b)

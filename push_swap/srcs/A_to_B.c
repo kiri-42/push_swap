@@ -6,13 +6,13 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:17:40 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 20:39:53 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 21:10:04 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	three_sort2(t_stack *stack)
+static void	three_sort_A_to_B(t_stack *stack)
 {
 	size_t	n1;
 	size_t	n2;
@@ -53,7 +53,7 @@ void	three_sort2(t_stack *stack)
 	}
 }
 
-void	short_sort2(size_t sort_size, t_stack *stack_a)
+static void	short_sort_A_to_B(size_t sort_size, t_stack *stack_a)
 {
 	if (sort_size <= 1)
 		return ;
@@ -66,7 +66,7 @@ void	short_sort2(size_t sort_size, t_stack *stack_a)
 	}
 	if (sort_size == 3)
 	{
-		three_sort2(stack_a);
+		three_sort_A_to_B(stack_a);
 		return ;
 	}
 }
@@ -80,7 +80,7 @@ void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 
 	if (sort_size <= 3)
 	{
-		short_sort2(sort_size, stack_a);
+		short_sort_A_to_B(sort_size, stack_a);
 		return ;
 	}
 	if (search_median(stack_a, sort_size, &pivot))
