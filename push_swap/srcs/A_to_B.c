@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:17:40 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 21:24:30 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:18:28 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,7 @@ void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 		return ;
 	}
 	if (search_median(stack_a, sort_size, &pivot))
-	{
-		print_stderr();
-		free(stack_a->num);
-		free(stack_b->num);
-		exit(1);
-	}
+		exit(finish_error(stack_a, stack_b));
 	count_ra = 0;
 	count_pb = 0;
 	while (sort_size--)
