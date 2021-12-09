@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_median.c                                    :+:      :+:    :+:   */
+/*   search_pivot.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:15 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 22:05:13 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 23:43:57 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	quick_sort(int *stack_num, ssize_t left, ssize_t right)
 	quick_sort(stack_num, j + 1, right);
 }
 
-int	search_median(t_stack *stack, size_t sort_size, int *median)
+int	search_pivot(t_stack *stack, size_t sort_size, int *pivot1, int *pivot2)
 {
 	int	*stack_copy;
 
@@ -59,7 +59,8 @@ int	search_median(t_stack *stack, size_t sort_size, int *median)
 	ft_memcpy(stack_copy, &stack->num[stack->top - (sort_size - 1)],
 		sizeof(int) * sort_size);
 	quick_sort(stack_copy, 0, (ssize_t)sort_size - 1);
-	*median = stack_copy[sort_size / 2];
+	*pivot1 = stack_copy[sort_size / 3];
+	*pivot2 = stack_copy[sort_size / 3 * 2];
 	free(stack_copy);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 22:14:52 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 23:36:59 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void	print_stdout(char *message);
 void	print_stderr(void);
 
 /* search_median */
-int		search_median(t_stack *stack, size_t sort_size, int *median);
+int		search_pivot(t_stack *stack, size_t sort_size, \
+int *pivot1, int *pivot2);
 
 /* command_swap */
 void	swap(int *n1, int *n2, char *message);
