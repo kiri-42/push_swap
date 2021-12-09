@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:18:03 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 18:24:58 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 21:46:38 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,46 +22,21 @@ void	three_sort3(t_stack *stack_b, t_stack *stack_a)
 	n2 = stack_b->top - 1;
 	n3 = stack_b->top - 2;
 	if (check_three_sort(stack_b->num[n3], stack_b->num[n1], stack_b->num[n2]))
-	{
-		swap(&stack_b->num[n1], &stack_b->num[n2], "sb");
-		push(stack_a, stack_b, "pa");
-		push(stack_a, stack_b, "pa");
-		push(stack_a, stack_b, "pa");
-	}
-	else if (check_three_sort(stack_b->num[n2], stack_b->num[n1], stack_b->num[n3]))
-	{
-		rotate(stack_b, "rb");
-		swap(&stack_b->num[n1], &stack_b->num[n2], "sb");
-		push(stack_a, stack_b, "pa");
-		rrotate(stack_b, "rrb");
-		push(stack_a, stack_b, "pa");
-		push(stack_a, stack_b, "pa");
-	}
-	else if (check_three_sort(stack_b->num[n2], stack_b->num[n3], stack_b->num[n1]))
-	{
-		push(stack_a, stack_b, "pa");
-		swap(&stack_b->num[n1], &stack_b->num[n2], "sb");
-		push(stack_a, stack_b, "pa");
-		push(stack_a, stack_b, "pa");
-	}
-	else if (check_three_sort(stack_b->num[n1], stack_b->num[n2], stack_b->num[n3]))
-	{
-		rotate(stack_b, "rb");
-		swap(&stack_b->num[n1], &stack_b->num[n2], "sb");
-		push(stack_a, stack_b, "pa");
-		push(stack_a, stack_b, "pa");
-		rrotate(stack_b, "rrb");
-		push(stack_a, stack_b, "pa");
-	}
-	else if (check_three_sort(stack_b->num[n1], stack_b->num[n3], stack_b->num[n2]))
-	{
-		rotate(stack_b, "rb");
-		push(stack_a, stack_b, "pa");
-		push(stack_a, stack_b, "pa");
-		rrotate(stack_b, "rrb");
-		push(stack_a, stack_b, "pa");
-	}
-	else if (check_three_sort(stack_b->num[n3], stack_b->num[n2], stack_b->num[n1]))
+		B_to_A_command_case1(stack_b, stack_a, n1, n2);
+	else if (check_three_sort(stack_b->num[n2], stack_b->num[n1],
+			stack_b->num[n3]))
+		B_to_A_command_case2(stack_b, stack_a, n1, n2);
+	else if (check_three_sort(stack_b->num[n2], stack_b->num[n3],
+			stack_b->num[n1]))
+		B_to_A_command_case3(stack_b, stack_a, n1, n2);
+	else if (check_three_sort(stack_b->num[n1], stack_b->num[n2],
+			stack_b->num[n3]))
+		B_to_A_command_case4(stack_b, stack_a, n1, n2);
+	else if (check_three_sort(stack_b->num[n1], stack_b->num[n3],
+			stack_b->num[n2]))
+		B_to_A_command_case5(stack_b, stack_a);
+	else if (check_three_sort(stack_b->num[n3], stack_b->num[n2],
+			stack_b->num[n1]))
 	{
 		push(stack_a, stack_b, "pa");
 		push(stack_a, stack_b, "pa");
