@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 20:47:50 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 21:26:46 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ size_t	search_min(t_stack *stack);
 
 /* A_to_B */
 void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b);
+
+/* A_to_B_command_case */
+void	A_to_B_command_case1(t_stack *stack, size_t n1, size_t n2);
+void	A_to_B_command_case2(t_stack *stack, size_t n1, size_t n2);
+void	A_to_B_command_case3(t_stack *stack, size_t n1, size_t n2);
+void	A_to_B_command_case4(t_stack *stack, size_t n1, size_t n2);
+void	A_to_B_command_case5(t_stack *stack, size_t n1, size_t n2);
 
 /* B_to_A */
 void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a);

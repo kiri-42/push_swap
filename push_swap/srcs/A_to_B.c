@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:17:40 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 21:10:04 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/09 21:24:30 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,35 +22,15 @@ static void	three_sort_A_to_B(t_stack *stack)
 	n2 = stack->top - 1;
 	n3 = stack->top - 2;
 	if (check_three_sort(stack->num[n3], stack->num[n1], stack->num[n2]))
-	{
-		rotate(stack, "ra");
-		swap(&stack->num[n1], &stack->num[n2], "sa");
-		rrotate(stack, "rra");
-		swap(&stack->num[n1], &stack->num[n2], "sa");
-	}
+		A_to_B_command_case1(stack, n1, n2);
 	else if (check_three_sort(stack->num[n2], stack->num[n1], stack->num[n3]))
-		swap(&stack->num[n1], &stack->num[n2], "sa");
+		A_to_B_command_case2(stack, n1, n2);
 	else if (check_three_sort(stack->num[n2], stack->num[n3], stack->num[n1]))
-	{
-		swap(&stack->num[n1], &stack->num[n2], "sa");
-		rotate(stack, "ra");
-		swap(&stack->num[n1], &stack->num[n2], "sa");
-		rrotate(stack, "rra");
-	}
+		A_to_B_command_case3(stack, n1, n2);
 	else if (check_three_sort(stack->num[n3], stack->num[n2], stack->num[n1]))
-	{
-		swap(&stack->num[n1], &stack->num[n2], "sa");
-		rotate(stack, "ra");
-		swap(&stack->num[n1], &stack->num[n2], "sa");
-		rrotate(stack, "rra");
-		swap(&stack->num[n1], &stack->num[n2], "sa");
-	}
+		A_to_B_command_case4(stack, n1, n2);
 	else if (check_three_sort(stack->num[n1], stack->num[n3], stack->num[n2]))
-	{
-		rotate(stack, "ra");
-		swap(&stack->num[n1], &stack->num[n2], "sa");
-		rrotate(stack, "rra");
-	}
+		A_to_B_command_case5(stack, n1, n2);
 }
 
 static void	short_sort_A_to_B(size_t sort_size, t_stack *stack_a)
