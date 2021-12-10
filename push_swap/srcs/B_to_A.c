@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:18:03 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 23:59:12 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/11 06:21:04 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,18 @@ static void	short_sort_B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack
 	}
 }
 
-static void	reset_rrotate(t_stack *stack, size_t count_rb)
+static void	reset_rrotate(t_stack *stack_b, t_stack *stack_a, ssize_t count_rb, ssize_t count_ra)
 {
-	size_t	i;
-
-	i = 1;
-	while (i <= count_rb)
+	while (count_ra > 0 && count_rb > 0)
 	{
-		rrotate(stack, "rrb");
-		i++;
+		rrotate_ab(stack_a, stack_b);
+		count_ra--;
+		count_rb--;
 	}
+	while (count_ra-- > 0)
+		rrotate(stack_a, "rra");
+	while (count_rb-- > 0)
+		rrotate(stack_b, "rrb");
 }
 
 // void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
@@ -118,19 +120,21 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 	int		pivot2;
 	size_t	count_rb;
 	size_t	count_pa;
+	size_t	count_ra;
 
 	if (sort_size <= 3)
 	{
 		short_sort_B_to_A(sort_size, stack_b, stack_a);
 		return ;
 	}
-	if (search_median(stack_b, sort_size, &pivot1, &pivot2))
+	if (search_pivot(stack_b, sort_size, &pivot1, &pivot2))
 		exit(finish_error(stack_a, stack_b));
 	count_rb = 0;
 	count_pa = 0;
+	count_ra = 0;
 	while (sort_size--)
 	{
-		if (stack_b->num[stack_b->top] < pivot)
+		if (stack_b->num[stack_b->top] < pivot1)
 		{
 			rotate(stack_b, "rb");
 			count_rb++;
@@ -139,9 +143,15 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 		{
 			push(stack_a, stack_b, "pa");
 			count_pa++;
+			if (stack_a->num[stack_a->top] < pivot2)
+			{
+				rotate(stack_a, "ra");
+				count_ra++;
+			}
 		}
 	}
-	reset_rrotate(stack_b, count_rb);
-	A_to_B(count_pa, stack_a, stack_b);
+	A_to_B(count_pa - count_ra, stack_a, stack_b);
+	reset_rrotate(stack_b, stack_a, (ssize_t)count_rb, (ssize_t)count_ra);
+	A_to_B(count_ra, stack_a, stack_b);
 	B_to_A(count_rb, stack_b, stack_a);
 }

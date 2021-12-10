@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:17:40 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 23:37:05 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/11 06:21:16 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,20 @@ static void	short_sort_A_to_B(size_t sort_size, t_stack *stack_a)
 		three_sort_A_to_B(stack_a);
 		return ;
 	}
+}
+
+static void	reset_rrotate(t_stack *stack_a, t_stack *stack_b, ssize_t count_ra, ssize_t count_rb)
+{
+	while (count_ra > 0 && count_rb > 0)
+	{
+		rrotate_ab(stack_a, stack_b);
+		count_ra--;
+		count_rb--;
+	}
+	while (count_ra-- > 0)
+		rrotate(stack_a, "rra");
+	while (count_rb-- > 0)
+		rrotate(stack_b, "rrb");
 }
 
 // void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
@@ -96,7 +110,7 @@ void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 	int		pivot2;
 	size_t	count_ra;
 	size_t	count_pb;
-	size_t	i;
+	size_t	count_rb;
 
 	if (sort_size <= 3)
 	{
@@ -107,9 +121,10 @@ void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 		exit(finish_error(stack_a, stack_b));
 	count_ra = 0;
 	count_pb = 0;
+	count_rb = 0;
 	while (sort_size--)
 	{
-		if (stack_a->num[stack_a->top] > pivot)
+		if (stack_a->num[stack_a->top] >= pivot2)
 		{
 			rotate(stack_a, "ra");
 			count_ra++;
@@ -118,14 +133,15 @@ void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 		{
 			push(stack_b, stack_a, "pb");
 			count_pb++;
+			if (stack_b->num[stack_b->top] >= pivot1)
+			{
+				rotate(stack_b, "rb");
+				count_rb++;
+			}
 		}
 	}
-	i = 1;
-	while (i <= count_ra)
-	{
-		rrotate(stack_a, "rra");
-		i++;
-	}
+	reset_rrotate(stack_a, stack_b, (ssize_t)count_ra, (ssize_t)count_rb);
 	A_to_B(count_ra, stack_a, stack_b);
-	B_to_A(count_pb, stack_b, stack_a);
+	B_to_A(count_rb, stack_b, stack_a);
+	B_to_A(count_pb - count_rb, stack_b, stack_a);
 }

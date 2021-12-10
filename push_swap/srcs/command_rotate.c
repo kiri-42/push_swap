@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:06 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 18:37:43 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/11 04:07:35 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	rotate_ab(t_stack *stack_a, t_stack *stack_b)
 
 void	rrotate_ab(t_stack *stack_a, t_stack *stack_b)
 {
-	rotate(stack_a, "rrr");
-	rotate(stack_b, "rrr");
+	rrotate(stack_a, "rrr");
+	rrotate(stack_b, "rrr");
 	print_stdout("rrr");
 }
