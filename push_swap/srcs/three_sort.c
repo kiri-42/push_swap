@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:23 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/11 22:17:17 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 05:31:25 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,5 @@ void	three_sort_B_to_A(t_stack *stack_b, t_stack *stack_a)
 		B_to_A_command_case5(stack_b, stack_a);
 	else if (check_three_sort(stack_b->num[n3], stack_b->num[n2],
 			stack_b->num[n1]))
-	{
-		push(stack_a, stack_b, "pa");
-		push(stack_a, stack_b, "pa");
-		push(stack_a, stack_b, "pa");
-	}
+		B_to_A_command_case6(stack_b, stack_a);
 }
