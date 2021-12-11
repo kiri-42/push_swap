@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:18:03 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 03:54:45 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 04:16:27 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,6 @@ static void	short_sort_B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack
 // 		rrotate(stack_b, "rrb");
 // }
 
-static bool	check_sort(t_stack *stack, size_t sort_size)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < sort_size - 1)
-	{
-		if (stack->num[stack->top - i] < stack->num[stack->top - (i + 1)])
-			return (false);
-		i++;
-	}
-	return (true);
-}
-
 static void	push_B_to_A(t_stack *stack_b, t_stack *stack_a, size_t push_size)
 {
 	while (push_size > 0)
@@ -70,6 +56,26 @@ static void	push_B_to_A(t_stack *stack_b, t_stack *stack_a, size_t push_size)
 		push(stack_a, stack_b, "pa");
 		push_size--;
 	}
+}
+
+static bool	check_sort(t_stack *stack_a, t_stack *stack_b, size_t sort_size)
+{
+	size_t	i;
+
+	if (sort_size <= 3)
+	{
+		short_sort_B_to_A(sort_size, stack_b, stack_a);
+		return (true);
+	}
+	i = 0;
+	while (i < sort_size - 1)
+	{
+		if (stack_b->num[stack_b->top - i] < stack_b->num[stack_b->top - (i + 1)])
+			return (false);
+		i++;
+	}
+	push_B_to_A(stack_b, stack_a, sort_size);
+	return (true);
 }
 
 static bool	check_less_than_pivot1(t_stack *stack, size_t sort_size, int pivot1)
@@ -100,14 +106,9 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 	int		pivot2;
 	t_count	count;
 
-	if (sort_size <= 3)
+	if (check_sort(stack_a, stack_b, sort_size))
 	{
-		short_sort_B_to_A(sort_size, stack_b, stack_a);
-		return ;
-	}
-	if (check_sort(stack_b, sort_size))
-	{
-		push_B_to_A(stack_b, stack_a, sort_size);
+		// push_B_to_A(stack_b, stack_a, sort_size);
 		return ;
 	}
 	if (search_pivot(stack_b, sort_size, &pivot1, &pivot2))

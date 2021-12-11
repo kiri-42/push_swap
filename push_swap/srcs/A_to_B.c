@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:17:40 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 03:51:57 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 04:17:55 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ static bool	check_sort(t_stack *stack, size_t sort_size)
 {
 	size_t	i;
 
+	if (sort_size <= 3)
+	{
+		short_sort_A_to_B(sort_size, stack);
+		return (true);
+	}
 	i = 0;
 	while (i < sort_size - 1)
 	{
@@ -127,26 +132,17 @@ static void	recursive_process(t_stack *stack_a, t_stack *stack_b, size_t sort_si
 	B_to_A(count.pb - count.rb, stack_b, stack_a);
 }
 
-
 void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 {
 	int		pivot1;
 	int		pivot2;
 	t_count	count;
 
-	if (sort_size <= 3)
-	{
-		short_sort_A_to_B(sort_size, stack_a);
-		return ;
-	}
 	if (check_sort(stack_a, sort_size))
 		return ;
 	if (search_pivot(stack_a, sort_size, &pivot1, &pivot2))
 		exit(finish_error(stack_a, stack_b));
 	init_count(&count);
-	count.ra = 0;
-	count.pb = 0;
-	count.rb = 0;
 	while (sort_size > 0)
 	{
 		if (stack_a->num[stack_a->top] >= pivot2)
