@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:18:03 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/11 06:21:04 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/11 20:29:16 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,43 @@ static void	reset_rrotate(t_stack *stack_b, t_stack *stack_a, ssize_t count_rb, 
 // 	B_to_A(count_rb, stack_b, stack_a);
 // }
 
+static bool	check_sort(t_stack *stack, size_t sort_size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < sort_size - 1)
+	{
+		if (stack->num[stack->top - i] < stack->num[stack->top - (i + 1)])
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+static void	push_B_to_A(t_stack *stack_b, t_stack *stack_a, size_t push_size)
+{
+	while (push_size > 0)
+	{
+		push(stack_a, stack_b, "pa");
+		push_size--;
+	}
+}
+
+static bool	check_less_than_pivot1(t_stack *stack, size_t sort_size, int pivot1)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < sort_size)
+	{
+		if (stack->num[stack->top - i] >= pivot1)
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
 void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 {
 	int		pivot1;
@@ -127,15 +164,22 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 		short_sort_B_to_A(sort_size, stack_b, stack_a);
 		return ;
 	}
+	if (check_sort(stack_b, sort_size))
+	{
+		push_B_to_A(stack_b, stack_a, sort_size);
+		return ;
+	}
 	if (search_pivot(stack_b, sort_size, &pivot1, &pivot2))
 		exit(finish_error(stack_a, stack_b));
 	count_rb = 0;
 	count_pa = 0;
 	count_ra = 0;
-	while (sort_size--)
+	while (sort_size > 0)
 	{
 		if (stack_b->num[stack_b->top] < pivot1)
 		{
+			if (check_less_than_pivot1(stack_b, sort_size, pivot1))
+				break ;
 			rotate(stack_b, "rb");
 			count_rb++;
 		}
@@ -149,9 +193,10 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 				count_ra++;
 			}
 		}
+		sort_size--;
 	}
 	A_to_B(count_pa - count_ra, stack_a, stack_b);
 	reset_rrotate(stack_b, stack_a, (ssize_t)count_rb, (ssize_t)count_ra);
 	A_to_B(count_ra, stack_a, stack_b);
-	B_to_A(count_rb, stack_b, stack_a);
+	B_to_A(count_rb + sort_size, stack_b, stack_a);
 }
