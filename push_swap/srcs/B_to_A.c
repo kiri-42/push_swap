@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:18:03 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/11 20:29:16 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/11 22:03:38 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,39 +80,6 @@ static void	reset_rrotate(t_stack *stack_b, t_stack *stack_a, ssize_t count_rb, 
 	while (count_rb-- > 0)
 		rrotate(stack_b, "rrb");
 }
-
-// void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
-// {
-// 	int		pivot;
-// 	size_t	count_rb;
-// 	size_t	count_pa;
-
-// 	if (sort_size <= 3)
-// 	{
-// 		short_sort_B_to_A(sort_size, stack_b, stack_a);
-// 		return ;
-// 	}
-// 	if (search_median(stack_b, sort_size, &pivot))
-// 		exit(finish_error(stack_a, stack_b));
-// 	count_rb = 0;
-// 	count_pa = 0;
-// 	while (sort_size--)
-// 	{
-// 		if (stack_b->num[stack_b->top] < pivot)
-// 		{
-// 			rotate(stack_b, "rb");
-// 			count_rb++;
-// 		}
-// 		else
-// 		{
-// 			push(stack_a, stack_b, "pa");
-// 			count_pa++;
-// 		}
-// 	}
-// 	reset_rrotate(stack_b, count_rb);
-// 	A_to_B(count_pa, stack_a, stack_b);
-// 	B_to_A(count_rb, stack_b, stack_a);
-// }
 
 static bool	check_sort(t_stack *stack, size_t sort_size)
 {
