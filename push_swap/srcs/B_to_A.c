@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:18:03 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/11 22:32:37 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 03:26:35 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,7 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 {
 	int		pivot1;
 	int		pivot2;
-	size_t	count_rb;
-	size_t	count_pa;
-	size_t	count_ra;
+	t_count	count;
 
 	if (sort_size <= 3)
 	{
@@ -106,9 +104,9 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 	}
 	if (search_pivot(stack_b, sort_size, &pivot1, &pivot2))
 		exit(finish_error(stack_a, stack_b));
-	count_rb = 0;
-	count_pa = 0;
-	count_ra = 0;
+	count.rb = 0;
+	count.pa = 0;
+	count.ra = 0;
 	while (sort_size > 0)
 	{
 		if (stack_b->num[stack_b->top] < pivot1)
@@ -116,22 +114,72 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 			if (check_less_than_pivot1(stack_b, sort_size, pivot1))
 				break ;
 			rotate(stack_b, "rb");
-			count_rb++;
+			count.rb++;
 		}
 		else
 		{
 			push(stack_a, stack_b, "pa");
-			count_pa++;
+			count.pa++;
 			if (stack_a->num[stack_a->top] < pivot2)
 			{
 				rotate(stack_a, "ra");
-				count_ra++;
+				count.ra++;
 			}
 		}
 		sort_size--;
 	}
-	A_to_B(count_pa - count_ra, stack_a, stack_b);
-	reset_stack(stack_a, stack_b, (ssize_t)count_ra, (ssize_t)count_rb);
-	A_to_B(count_ra, stack_a, stack_b);
-	B_to_A(count_rb + sort_size, stack_b, stack_a);
+	A_to_B(count.pa - count.ra, stack_a, stack_b);
+	reset_stack(stack_a, stack_b, (ssize_t)count.ra, (ssize_t)count.rb);
+	A_to_B(count.ra, stack_a, stack_b);
+	B_to_A(count.rb + sort_size, stack_b, stack_a);
 }
+
+// void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
+// {
+// 	int		pivot1;
+// 	int		pivot2;
+// 	size_t	count_rb;
+// 	size_t	count_pa;
+// 	size_t	count_ra;
+
+// 	if (sort_size <= 3)
+// 	{
+// 		short_sort_B_to_A(sort_size, stack_b, stack_a);
+// 		return ;
+// 	}
+// 	if (check_sort(stack_b, sort_size))
+// 	{
+// 		push_B_to_A(stack_b, stack_a, sort_size);
+// 		return ;
+// 	}
+// 	if (search_pivot(stack_b, sort_size, &pivot1, &pivot2))
+// 		exit(finish_error(stack_a, stack_b));
+// 	count_rb = 0;
+// 	count_pa = 0;
+// 	count_ra = 0;
+// 	while (sort_size > 0)
+// 	{
+// 		if (stack_b->num[stack_b->top] < pivot1)
+// 		{
+// 			if (check_less_than_pivot1(stack_b, sort_size, pivot1))
+// 				break ;
+// 			rotate(stack_b, "rb");
+// 			count_rb++;
+// 		}
+// 		else
+// 		{
+// 			push(stack_a, stack_b, "pa");
+// 			count_pa++;
+// 			if (stack_a->num[stack_a->top] < pivot2)
+// 			{
+// 				rotate(stack_a, "ra");
+// 				count_ra++;
+// 			}
+// 		}
+// 		sort_size--;
+// 	}
+// 	A_to_B(count_pa - count_ra, stack_a, stack_b);
+// 	reset_stack(stack_a, stack_b, (ssize_t)count_ra, (ssize_t)count_rb);
+// 	A_to_B(count_ra, stack_a, stack_b);
+// 	B_to_A(count_rb + sort_size, stack_b, stack_a);
+// }
