@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:18:03 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/11 22:32:37 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/11 22:36:39 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,6 @@ static void	short_sort_B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack
 		return ;
 	}
 }
-
-// static void	reset_stack(t_stack *stack_b, t_stack *stack_a, ssize_t count_rb, ssize_t count_ra)
-// {
-// 	while (count_ra > 0 && count_rb > 0)
-// 	{
-// 		rrotate_ab(stack_a, stack_b);
-// 		count_ra--;
-// 		count_rb--;
-// 	}
-// 	while (count_ra-- > 0)
-// 		rrotate(stack_a, "rra");
-// 	while (count_rb-- > 0)
-// 		rrotate(stack_b, "rrb");
-// }
 
 static bool	check_sort(t_stack *stack, size_t sort_size)
 {
