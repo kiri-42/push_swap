@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:17:40 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/11 22:23:56 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/11 22:31:31 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ static void	short_sort_A_to_B(size_t sort_size, t_stack *stack_a)
 	}
 }
 
-static void	reset_rrotate(t_stack *stack_a, t_stack *stack_b, ssize_t count_ra, ssize_t count_rb)
-{
-	while (count_ra > 0 && count_rb > 0)
-	{
-		rrotate_ab(stack_a, stack_b);
-		count_ra--;
-		count_rb--;
-	}
-	while (count_ra-- > 0)
-		rrotate(stack_a, "rra");
-	while (count_rb-- > 0)
-		rrotate(stack_b, "rrb");
-}
+// static void	reset_stack(t_stack *stack_a, t_stack *stack_b, ssize_t count_ra, ssize_t count_rb)
+// {
+// 	while (count_ra > 0 && count_rb > 0)
+// 	{
+// 		rrotate_ab(stack_a, stack_b);
+// 		count_ra--;
+// 		count_rb--;
+// 	}
+// 	while (count_ra-- > 0)
+// 		rrotate(stack_a, "rra");
+// 	while (count_rb-- > 0)
+// 		rrotate(stack_b, "rrb");
+// }
 
 static bool	check_sort(t_stack *stack, size_t sort_size)
 {
@@ -113,7 +113,7 @@ void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 		}
 		sort_size--;
 	}
-	reset_rrotate(stack_a, stack_b, (ssize_t)count_ra, (ssize_t)count_rb);
+	reset_stack(stack_a, stack_b, (ssize_t)count_ra, (ssize_t)count_rb);
 	A_to_B(count_ra + sort_size, stack_a, stack_b);
 	B_to_A(count_rb, stack_b, stack_a);
 	B_to_A(count_pb - count_rb, stack_b, stack_a);
