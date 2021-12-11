@@ -1,42 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_count.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 15:57:23 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/11 23:05:36 by tkirihar         ###   ########.fr       */
+/*   Created: 2021/12/12 01:48:52 by tkirihar          #+#    #+#             */
+/*   Updated: 2021/12/12 01:49:15 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+void	init_count(t_count *count)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-	size_t	i;
-
-	if (!check_arg(ac, av))
-	{
-		print_stderr();
-		return (1);
-	}
-	if (init_stack(&stack_a, &stack_b, ac, av))
-	{
-		print_stderr();
-		return (1);
-	}
-	sort(ac - 1, &stack_a, &stack_b);
-	i = 1;
-	// while (i <= (size_t)ac - 1)
-	// {
-	// 	printf("%d|", stack_a.num[i]);
-	// 	i++;
-	// }
-	// printf("\n");
-	free(stack_a.num);
-	free(stack_b.num);
-	return (0);
+	count->ra = 0;
+	count->rb = 0;
+	count->pa = 0;
+	count->pb = 0;
 }
