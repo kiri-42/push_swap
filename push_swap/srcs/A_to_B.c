@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:17:40 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 03:37:10 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 03:51:57 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ static void	recursive_process(t_stack *stack_a, t_stack *stack_b, size_t sort_si
 	B_to_A(count.pb - count.rb, stack_b, stack_a);
 }
 
+
 void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 {
 	int		pivot1;
@@ -142,6 +143,7 @@ void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 		return ;
 	if (search_pivot(stack_a, sort_size, &pivot1, &pivot2))
 		exit(finish_error(stack_a, stack_b));
+	init_count(&count);
 	count.ra = 0;
 	count.pb = 0;
 	count.rb = 0;

@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 03:16:59 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 03:58:41 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ void	B_to_A_command_case6(t_stack *stack_b, t_stack *stack_a);
 /* reset_stack */
 void	reset_stack(t_stack *stack_a, t_stack *stack_b, \
 		ssize_t count_ra, ssize_t count_rb);
+
+/* init_count */
+void	init_count(t_count *count);
 
 /* print_message */
 void	print_stdout(char *message);

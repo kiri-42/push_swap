@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:18:03 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 03:35:16 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 03:54:45 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,7 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 	}
 	if (search_pivot(stack_b, sort_size, &pivot1, &pivot2))
 		exit(finish_error(stack_a, stack_b));
-	count.rb = 0;
-	count.pa = 0;
-	count.ra = 0;
+	init_count(&count);
 	while (sort_size > 0)
 	{
 		if (stack_b->num[stack_b->top] < pivot1)
