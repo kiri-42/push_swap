@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:18:03 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 03:26:35 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 03:35:16 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,14 @@ static bool	check_less_than_pivot1(t_stack *stack, size_t sort_size, int pivot1)
 	return (true);
 }
 
+static void	recursive_process(t_stack *stack_a, t_stack *stack_b, size_t sort_size, t_count count)
+{
+	A_to_B(count.pa - count.ra, stack_a, stack_b);
+	reset_stack(stack_a, stack_b, (ssize_t)count.ra, (ssize_t)count.rb);
+	A_to_B(count.ra, stack_a, stack_b);
+	B_to_A(count.rb + sort_size, stack_b, stack_a);
+}
+
 void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 {
 	int		pivot1;
@@ -128,10 +136,7 @@ void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 		}
 		sort_size--;
 	}
-	A_to_B(count.pa - count.ra, stack_a, stack_b);
-	reset_stack(stack_a, stack_b, (ssize_t)count.ra, (ssize_t)count.rb);
-	A_to_B(count.ra, stack_a, stack_b);
-	B_to_A(count.rb + sort_size, stack_b, stack_a);
+	recursive_process(stack_a, stack_b, sort_size, count);
 }
 
 // void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)

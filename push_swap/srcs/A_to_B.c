@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:17:40 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 03:22:58 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 03:37:10 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,14 @@ static bool	check_pivot2_or_more(t_stack *stack, size_t sort_size, int pivot2)
 // 	B_to_A(count_pb - count_rb, stack_b, stack_a);
 // }
 
+static void	recursive_process(t_stack *stack_a, t_stack *stack_b, size_t sort_size, t_count count)
+{
+	reset_stack(stack_a, stack_b, (ssize_t)count.ra, (ssize_t)count.rb);
+	A_to_B(count.ra + sort_size, stack_a, stack_b);
+	B_to_A(count.rb, stack_b, stack_a);
+	B_to_A(count.pb - count.rb, stack_b, stack_a);
+}
+
 void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 {
 	int		pivot1;
@@ -158,8 +166,5 @@ void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 		}
 		sort_size--;
 	}
-	reset_stack(stack_a, stack_b, (ssize_t)count.ra, (ssize_t)count.rb);
-	A_to_B(count.ra + sort_size, stack_a, stack_b);
-	B_to_A(count.rb, stack_b, stack_a);
-	B_to_A(count.pb - count.rb, stack_b, stack_a);
+	recursive_process(stack_a, stack_b, sort_size, count);
 }
