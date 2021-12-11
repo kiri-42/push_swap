@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 05:11:26 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 05:19:15 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,10 @@ void	B_to_A_command_case6(t_stack *stack_b, t_stack *stack_a);
 /* short_sort */
 void	short_sort_A_to_B(size_t sort_size, t_stack *stack_a);
 void	short_sort_B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a);
+
+/* check_sort */
+bool	check_sort_A_to_B(t_stack *stack, size_t sort_size);
+bool	check_sort_B_to_A(t_stack *stack_a, t_stack *stack_b, size_t sort_size);
 
 /* reset_stack */
 void	reset_stack(t_stack *stack_a, t_stack *stack_b, \

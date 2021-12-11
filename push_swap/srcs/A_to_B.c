@@ -6,30 +6,11 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:17:40 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 05:11:58 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 05:20:24 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static bool	check_sort(t_stack *stack, size_t sort_size)
-{
-	size_t	i;
-
-	if (sort_size <= 3)
-	{
-		short_sort_A_to_B(sort_size, stack);
-		return (true);
-	}
-	i = 0;
-	while (i < sort_size - 1)
-	{
-		if (stack->num[stack->top - i] > stack->num[stack->top - (i + 1)])
-			return (false);
-		i++;
-	}
-	return (true);
-}
 
 static bool	check_pivot2_or_more(t_stack *stack, size_t sort_size, int pivot2)
 {
@@ -45,7 +26,8 @@ static bool	check_pivot2_or_more(t_stack *stack, size_t sort_size, int pivot2)
 	return (true);
 }
 
-static void	recursive_process(t_stack *stack_a, t_stack *stack_b, size_t sort_size, t_count count)
+static void	recursive_process(t_stack *stack_a, t_stack *stack_b,
+							size_t sort_size, t_count count)
 {
 	reset_stack(stack_a, stack_b, (ssize_t)count.ra, (ssize_t)count.rb);
 	A_to_B(count.ra + sort_size, stack_a, stack_b);
@@ -53,7 +35,8 @@ static void	recursive_process(t_stack *stack_a, t_stack *stack_b, size_t sort_si
 	B_to_A(count.pb - count.rb, stack_b, stack_a);
 }
 
-static void	collect_less_than_pivot2(t_stack *stack_a, t_stack *stack_b, t_count *count, int pivot1)
+static void	collect_less_than_pivot2(t_stack *stack_a, t_stack *stack_b,
+									t_count *count, int pivot1)
 {
 	push(stack_b, stack_a, "pb");
 	count->pb++;
@@ -76,7 +59,7 @@ void	A_to_B(size_t sort_size, t_stack *stack_a, t_stack *stack_b)
 	int		pivot2;
 	t_count	count;
 
-	if (check_sort(stack_a, sort_size))
+	if (check_sort_A_to_B(stack_a, sort_size))
 		return ;
 	if (search_pivot(stack_a, sort_size, &pivot1, &pivot2))
 		exit(finish_error(stack_a, stack_b));
