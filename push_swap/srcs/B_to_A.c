@@ -6,43 +6,11 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 17:18:03 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/11 22:03:38 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/11 22:24:08 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static void	three_sort_B_to_A(t_stack *stack_b, t_stack *stack_a)
-{
-	size_t	n1;
-	size_t	n2;
-	size_t	n3;
-
-	n1 = stack_b->top;
-	n2 = stack_b->top - 1;
-	n3 = stack_b->top - 2;
-	if (check_three_sort(stack_b->num[n3], stack_b->num[n1], stack_b->num[n2]))
-		B_to_A_command_case1(stack_b, stack_a, n1, n2);
-	else if (check_three_sort(stack_b->num[n2], stack_b->num[n1],
-			stack_b->num[n3]))
-		B_to_A_command_case2(stack_b, stack_a, n1, n2);
-	else if (check_three_sort(stack_b->num[n2], stack_b->num[n3],
-			stack_b->num[n1]))
-		B_to_A_command_case3(stack_b, stack_a, n1, n2);
-	else if (check_three_sort(stack_b->num[n1], stack_b->num[n2],
-			stack_b->num[n3]))
-		B_to_A_command_case4(stack_b, stack_a, n1, n2);
-	else if (check_three_sort(stack_b->num[n1], stack_b->num[n3],
-			stack_b->num[n2]))
-		B_to_A_command_case5(stack_b, stack_a);
-	else if (check_three_sort(stack_b->num[n3], stack_b->num[n2],
-			stack_b->num[n1]))
-	{
-		push(stack_a, stack_b, "pa");
-		push(stack_a, stack_b, "pa");
-		push(stack_a, stack_b, "pa");
-	}
-}
 
 static void	short_sort_B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a)
 {

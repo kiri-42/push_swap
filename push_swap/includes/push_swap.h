@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 23:36:59 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/11 22:22:38 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	sort(int sort_size, t_stack *stack_a, t_stack *stack_b);
 
 /* three_sort */
 void	three_sort(t_stack *stack);
+void	three_sort_A_to_B(t_stack *stack);
+void	three_sort_B_to_A(t_stack *stack_b, t_stack *stack_a);
 
 /* check_three_sort */
 bool	check_three_sort(int small, int medium, int large);
@@ -56,7 +58,7 @@ void	A_to_B_command_case5(t_stack *stack, size_t n1, size_t n2);
 /* B_to_A */
 void	B_to_A(size_t sort_size, t_stack *stack_b, t_stack *stack_a);
 
-/* B_to_A_command_case*/
+/* B_to_A_command_case1~5 */
 void	B_to_A_command_case1(t_stack *stack_b, t_stack *stack_a, \
 size_t n1, size_t n2);
 void	B_to_A_command_case2(t_stack *stack_b, t_stack *stack_a, \
@@ -66,6 +68,9 @@ size_t n1, size_t n2);
 void	B_to_A_command_case4(t_stack *stack_b, t_stack *stack_a, \
 size_t n1, size_t n2);
 void	B_to_A_command_case5(t_stack *stack_b, t_stack *stack_a);
+
+/* B_to_A_command_case6 */
+void	B_to_A_command_case6(t_stack *stack_b, t_stack *stack_a);
 
 /* print_message */
 void	print_stdout(char *message);
