@@ -6,11 +6,25 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 05:15:14 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 05:18:39 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/12 20:48:11 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+bool	check_sort(t_stack *stack)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < stack->top - 1)
+	{
+		if (stack->num[stack->top - i] > stack->num[stack->top - (i + 1)])
+			return (false);
+		i++;
+	}
+	return (true);
+}
 
 bool	check_sort_A_to_B(t_stack *stack, size_t sort_size)
 {
