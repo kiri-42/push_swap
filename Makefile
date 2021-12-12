@@ -6,17 +6,13 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/08 15:58:34 by tkirihar          #+#    #+#              #
-#    Updated: 2021/12/12 07:16:54 by tkirihar         ###   ########.fr        #
+#    Updated: 2021/12/12 20:21:34 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 		push_swap
+NAME = 		./push_swap/srcs/push_swap
 
-NAME_B = 	checker
-
-EXE = 		./push_swap/exe/push_swap
-
-EXE_B = 	./checker/exe/checker
+NAME_B = 	./checker/srcs/checker
 
 SRCS = 		./push_swap/srcs/main.c \
 			./push_swap/srcs/A_to_B.c \
@@ -68,10 +64,10 @@ RM =		rm -f
 CFLAGS =	-Wall -Wextra -Werror
 
 $(NAME):	$(OBJS) $(LIBFT)
-			$(CC) $^ -o $(EXE)
+			$(CC) $^ -o $@
 
 $(NAME_B):	$(OBJS_B) $(LIBFT)
-			$(CC) $^ -o $(EXE_B)
+			$(CC) $^ -o $@
 
 $(LIBFT):
 			make -C libft bonus
@@ -85,7 +81,7 @@ clean:
 			$(RM) $(OBJS) $(OBJS_B)
 
 fclean:		clean
-			$(RM) $(EXE) $(EXE_B)
+			$(RM) $(NAME_B) $(NAME_B)
 
 re:			fclean all
 
