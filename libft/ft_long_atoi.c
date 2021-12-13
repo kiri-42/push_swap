@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_long_atoi.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 16:06:06 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/13 13:15:07 by tkirihar         ###   ########.fr       */
+/*   Created: 2021/12/13 12:01:57 by tkirihar          #+#    #+#             */
+/*   Updated: 2021/12/13 13:15:17 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long	process_flow(int sign)
-{
-	if (sign == -1)
-	{
-		return (LONG_MIN);
-	}
-	return (LONG_MAX);
-}
-
-int	ft_atoi(const char *str)
+long	ft_long_atoi(const char *str)
 {
 	size_t		i;
 	long		num;
@@ -42,10 +33,8 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if ((num * 10 + (str[i] - '0')) / 10 != num)
-			return ((int)process_flow(sign));
 		num = (num * 10) + (str[i] - '0');
 		i++;
 	}
-	return ((int)(num * sign));
+	return (num * sign);
 }

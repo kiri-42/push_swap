@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:06:59 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 20:37:43 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:01:10 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdbool.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_list
 {
@@ -23,7 +28,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-/* Libc functions */
+/* Mandatory part1 */
 int		ft_isalpha(char c);
 int		ft_isdigit(char c);
 int		ft_isalnum(char c);
@@ -48,7 +53,7 @@ int		ft_atoi(const char *nptr);
 void	*ft_calloc(size_t n, size_t size);
 char	*ft_strdup(char *src);
 
-/* Additional functions */
+/* Mandatory part2 */
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
@@ -71,5 +76,14 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/* get_next_line */
+char	*get_next_line(int fd);
+char	*free_and_return(char *free_variable);
+
+/* Additional functions */
+int		ft_isspace(char a);
+long	ft_long_atoi(const char *str);
+bool	check_int(const char *str);
 
 #endif
