@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:01:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/14 16:50:33 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/14 20:33:32 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,6 @@ int		init_stack(t_stack *stack_a, t_stack *stack_b, int ac, char **av);
 
 /* sort */
 void	sort(t_stack *stack_a, t_stack *stack_b);
-
-/* print_message */
-void	print_stderr(void);
-void	print_stdout(char *message);
 
 /* command_swap */
 void	swap(int *n1, int *n2);

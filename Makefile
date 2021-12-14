@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/08 15:58:34 by tkirihar          #+#    #+#              #
-#    Updated: 2021/12/14 16:58:15 by tkirihar         ###   ########.fr        #
+#    Updated: 2021/12/14 20:27:31 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ SRCS = 		./push_swap/srcs/main.c \
 			./push_swap/srcs/finish_error.c \
 			./push_swap/srcs/init_count.c \
 			./push_swap/srcs/init_stack.c \
-			./push_swap/srcs/print_message.c \
 			./push_swap/srcs/reset_stack.c \
 			./push_swap/srcs/search_min.c \
 			./push_swap/srcs/search_pivot.c \
@@ -46,7 +45,6 @@ SRCS_B = 	./checker/srcs/main.c \
 			./checker/srcs/command_rotate.c \
 			./checker/srcs/command_swap.c \
 			./checker/srcs/init_stack.c \
-			./checker/srcs/print_message.c \
 			./checker/srcs/sort.c
 
 OBJS = 		$(SRCS:.c=.o)

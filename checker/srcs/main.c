@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:01:43 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 19:02:29 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/14 20:38:25 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@ int	main(int ac, char **av)
 
 	if (!check_arg(ac, av))
 	{
-		print_stderr();
+		ft_putendl_fd("Error", STDERR_FILENO);
 		return (1);
 	}
 	if (init_stack(&stack_a, &stack_b, ac, av))
 	{
-		print_stderr();
+		ft_putendl_fd("Error", STDERR_FILENO);
 		return (1);
 	}
 	sort(&stack_a, &stack_b);
 	if (!(check_sort(&stack_a, (size_t)ac - 1) && check_empty(&stack_b)))
 	{
-		print_stdout("KO");
+		ft_putendl_fd("KO", STDOUT_FILENO);
 		free(stack_a.num);
 		free(stack_b.num);
 		return (1);
 	}
-	print_stdout("OK");
+	ft_putendl_fd("OK", STDOUT_FILENO);
 	free(stack_a.num);
 	free(stack_b.num);
 	return (0);

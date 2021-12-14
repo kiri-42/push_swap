@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 22:12:11 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/09 22:14:11 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/14 19:14:25 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	finish_error(t_stack *stack_a, t_stack *stack_b)
 {
-	print_stderr();
+	ft_putendl_fd("Error", STDERR_FILENO);
 	free(stack_a->num);
 	free(stack_b->num);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/14 16:36:10 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/14 19:12:08 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,6 @@ void	reset_stack(t_stack *stack_a, t_stack *stack_b, \
 
 /* init_count */
 void	init_count(t_count *count);
-
-/* print_message */
-void	print_stdout(char *message);
-void	print_stderr(void);
 
 /* search_median */
 int		search_pivot(t_stack *stack, size_t sort_size, \

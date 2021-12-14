@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:06 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/11 04:07:35 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/14 19:05:48 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	rotate(t_stack *stack, char *message)
 	}
 	stack->num[1] = tmp;
 	if (ft_strncmp(message, "rr", 2))
-		print_stdout(message);
+		ft_putendl_fd(message, STDOUT_FILENO);
 }
 
 void	rrotate(t_stack *stack, char *message)
@@ -43,19 +43,19 @@ void	rrotate(t_stack *stack, char *message)
 	}
 	stack->num[stack->top] = tmp;
 	if (ft_strncmp(message, "rrr", 3))
-		print_stdout(message);
+		ft_putendl_fd(message, STDOUT_FILENO);
 }
 
 void	rotate_ab(t_stack *stack_a, t_stack *stack_b)
 {
 	rotate(stack_a, "rr");
 	rotate(stack_b, "rr");
-	print_stdout("rr");
+	ft_putendl_fd("rr", STDOUT_FILENO);
 }
 
 void	rrotate_ab(t_stack *stack_a, t_stack *stack_b)
 {
 	rrotate(stack_a, "rrr");
 	rrotate(stack_b, "rrr");
-	print_stdout("rrr");
+	ft_putendl_fd("rrr", STDOUT_FILENO);
 }
