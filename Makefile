@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/08 15:58:34 by tkirihar          #+#    #+#              #
-#    Updated: 2021/12/14 16:35:52 by tkirihar         ###   ########.fr        #
+#    Updated: 2021/12/14 16:58:15 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,6 @@ SRCS_B = 	./checker/srcs/main.c \
 			./checker/srcs/command_push.c \
 			./checker/srcs/command_rotate.c \
 			./checker/srcs/command_swap.c \
-			./checker/srcs/get_next_line.c \
-			./checker/srcs/get_next_line_utils.c \
 			./checker/srcs/init_stack.c \
 			./checker/srcs/print_message.c \
 			./checker/srcs/sort.c

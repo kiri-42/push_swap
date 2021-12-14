@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:01:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 19:02:06 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/14 16:50:33 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,13 @@
 # include <sys/stat.h>
 # include <stdio.h>
 # include <stdbool.h>
-# include "../../libft/libft.h"
+# include "../../libft-1.4.1/libft.h"
 
 typedef struct s_stack
 {
 	int		*num;
 	size_t	top;
 }	t_stack;
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
 
 /* check_arg */
 bool	check_arg(int ac, char **av);
@@ -40,12 +36,6 @@ int		init_stack(t_stack *stack_a, t_stack *stack_b, int ac, char **av);
 
 /* sort */
 void	sort(t_stack *stack_a, t_stack *stack_b);
-
-/* get_next_line */
-char	*get_next_line(int fd);
-
-/* get_next_line_utils */
-char	*free_and_return(char *free_variable);
 
 /* print_message */
 void	print_stderr(void);
