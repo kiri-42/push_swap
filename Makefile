@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/08 15:58:34 by tkirihar          #+#    #+#              #
-#    Updated: 2021/12/12 20:21:34 by tkirihar         ###   ########.fr        #
+#    Updated: 2021/12/14 16:35:52 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ OBJS = 		$(SRCS:.c=.o)
 
 OBJS_B = 	$(SRCS_B:.c=.o)
 
-LIBFT = 	./libft/libft.a
+LIBFT = 	./libft-1.4.1/libft.a
 
 CC =		gcc
 

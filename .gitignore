@@ -1,0 +1,6 @@
+*
+!*/*.c
+!*/*.h
+!Makefile
+!.gitignore
+!libft-1.4.1/

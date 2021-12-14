@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:58:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/12 20:48:51 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/14 16:36:10 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <stdio.h>
-# include "../../libft/libft.h"
+# include "../../libft-1.4.1/libft.h"
 
 typedef struct s_stack
 {
