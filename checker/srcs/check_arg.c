@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:02:00 by tkirihar          #+#    #+#             */
-/*   Updated: 2021/12/08 19:01:45 by tkirihar         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:31:49 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static bool	check_digit(int ac, char **av)
 			if (!(ft_isdigit(av[i][j++])))
 				return (false);
 		}
+		if (!check_int(av[i]))
+			return (false);
 		i++;
 	}
 	return (true);
