@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/08 15:58:34 by tkirihar          #+#    #+#              #
-#    Updated: 2021/12/14 20:27:31 by tkirihar         ###   ########.fr        #
+#    Updated: 2021/12/15 16:54:26 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,9 @@ OBJS = 		$(SRCS:.c=.o)
 
 OBJS_B = 	$(SRCS_B:.c=.o)
 
-LIBFT = 	./libft-1.4.1/libft.a
+LIBFT = 	libft-1.4.1
+
+LIBFT_A = 	./libft-1.4.1/libft.a
 
 CC =		gcc
 
@@ -59,25 +61,27 @@ RM =		rm -f
 
 CFLAGS =	-Wall -Wextra -Werror
 
-$(NAME):	$(OBJS) $(LIBFT)
+$(NAME):	$(OBJS) $(LIBFT_A)
 			$(CC) $^ -o $@
 
-$(NAME_B):	$(OBJS_B) $(LIBFT)
+$(NAME_B):	$(OBJS_B) $(LIBFT_A)
 			$(CC) $^ -o $@
 
 $(LIBFT):
-			make -C libft bonus
+			make -C $(LIBFT_A) bonus
 
 all:		$(NAME)
 
 .c.o:
-			$(CC) $(CFLAGS) -c $< -o $(<:%.c=%.o)
+			$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 			$(RM) $(OBJS) $(OBJS_B)
+			make -C $(LIBFT) clean
 
 fclean:		clean
 			$(RM) $(NAME_B) $(NAME_B)
+			make -C $(LIBFT) fclean
 
 re:			fclean all
 
