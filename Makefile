@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/08 15:58:34 by tkirihar          #+#    #+#              #
-#    Updated: 2021/12/15 16:54:26 by tkirihar         ###   ########.fr        #
+#    Updated: 2021/12/16 10:55:04 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,8 +67,8 @@ $(NAME):	$(OBJS) $(LIBFT_A)
 $(NAME_B):	$(OBJS_B) $(LIBFT_A)
 			$(CC) $^ -o $@
 
-$(LIBFT):
-			make -C $(LIBFT_A) bonus
+$(LIBFT_A):
+			make -C $(LIBFT) bonus
 
 all:		$(NAME)
 
@@ -80,7 +80,7 @@ clean:
 			make -C $(LIBFT) clean
 
 fclean:		clean
-			$(RM) $(NAME_B) $(NAME_B)
+			$(RM) $(NAME) $(NAME_B)
 			make -C $(LIBFT) fclean
 
 re:			fclean all
